@@ -1,12 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('demoButton');
-    const text = document.getElementById('demoText');
+    // Tab navigation
+    const tabs = document.querySelectorAll('.nav-button');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-    button.addEventListener('click', function() {
-        text.textContent = 'JavaScript работает! ' + new Date().toLocaleTimeString();
-        text.style.color = '#007acc';
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
     });
-    
-    // Дополнительный пример JS функциональности
-    console.log('Сайт загружен и готов к работе!');
+
+    // Project card hover effects
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = 'none';
+        });
+    });
 });

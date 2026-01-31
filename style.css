@@ -1,34 +1,102 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    line-height: 1.6;
+    font-family: 'Golos', Arial, sans-serif;
+    background: #F5F5F7;
+    color: #333333;
+    margin: 0;
+    padding: 32px;
+    line-height: 24px; /* 16px * 1.5 = 24px */
 }
 
-header {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+h1, h2, h3 {
+    color: #000000;
+    line-height: calc(1.25 * var(--font-size));
 }
 
-button {
-    background: #007acc;
+h1 { --font-size: 32px; font-size: 32px; line-height: 40px; }
+h2 { --font-size: 24px; font-size: 24px; line-height: 32px; }
+h3 { --font-size: 20px; font-size: 20px; line-height: 24px; }
+
+.caption {
+    color: #76767A;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/* Layout */
+.header {
+    background: #FFFFFF;
+    padding: 32px;
+    margin-bottom: 32px;
+    border-bottom: 4px solid #E5E5EB;
+}
+
+.nav {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+}
+
+.section {
+    background: #FFFFFF;
+    padding: 32px;
+    margin-bottom: 32px;
+    border: 1px solid #A7A8AB;
+}
+
+/* Components */
+.nav-button {
+    background: #0061D9;
     color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-button:hover {
-    background: #005fa3;
+.nav-button.active {
+    background: #0050B2;
 }
 
-footer {
-    margin-top: 40px;
-    text-align: center;
-    color: #666;
+.skill-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #F5F5F7;
+    border: 1px solid #A7A8AB;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+.project-card {
+    background: #FFFFFF;
+    padding: 24px;
+    border: 1px solid #E5E5EB;
+    margin-bottom: 24px;
+}
+
+/* Grid system */
+@media (min-width: 1088px) {
+    .skills-grid, .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 359px) {
+    body {
+        padding: 16px;
+    }
+    
+    .skills-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #D9D9DE;
+    margin: 24px 0;
 }

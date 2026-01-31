@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт на GitHub Pages</title>
+    <title>Резюме Николай Островский</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Добро пожаловать!</h1>
+    <header class="header">
+        <h1>Николай Островский</h1>
+        <nav class="nav">
+            <button class="nav-button active" data-tab="resume">Резюме</button>
+            <button class="nav-button" data-tab="projects">Проекты</button>
+        </nav>
     </header>
-    
+
     <main>
-        <p>Это статический сайт с поддержкой JavaScript</p>
-        <button id="demoButton">Нажми меня</button>
-        <p id="demoText"></p>
+        <!-- Резюме -->
+        <section id="resume" class="tab-content active">
+            <div class="section">
+                <h2>Опыт работы</h2>
+                <div class="timeline">
+                    <article class="card">
+                        <h3>Frontend Developer</h3>
+                        <p class="caption">Компания · 2020–2023</p>
+                        <p>Разработка веб-приложений на React, оптимизация производительности</p>
+                    </article>
+                    <hr class="divider">
+                    <article class="card">
+                        <h3>Junior Developer</h3>
+                        <p class="caption">Стартап · 2018–2020</p>
+                        <p>Создание MVP для стартапов, верстка по макетам</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Навыки</h2>
+                <div class="skills-grid">
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">TypeScript</div>
+                    <div class="skill-tag">HTML/CSS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Проекты -->
+        <section id="projects" class="tab-content">
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Проект 1</h3>
+                    <p class="caption">2023 · Веб-приложение</p>
+                    <p>Описание проекта и используемых технологий</p>
+                </article>
+                <article class="project-card">
+                    <h3>Проект 2</h3>
+                    <p class="caption">2022 · Мобильное приложение</p>
+                    <p>Описание проекта и его особенностей</p>
+                </article>
+            </div>
+        </section>
     </main>
-    
+
     <footer>
-        <p>© 2023 Мой сайт</p>
+        <p>© 2023 Николай Островский</p>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
