@@ -7,11 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
         tab.addEventListener('click', function() {
             // Remove active class from all tabs and contents
             tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked tab and corresponding content
-            this.classList.add('active');
-            document.getElementById(this.dataset.tab).classList.add('active');
+            tabContents.forEach(c => {
+  c.style.opacity = 0;
+  c.style.transform = 'translateY(20px)';
+  setTimeout(() => c.classList.remove('active'), 300);
+});
+
+this.classList.add('active');
+const activeContent = document.getElementById(this.dataset.tab);
+activeContent.classList.add('active');
+setTimeout(() => {
+  activeContent.style.opacity = 1;
+  activeContent.style.transform = 'translateY(0)';
+}, 50);
         });
     });
 
@@ -25,4 +33,33 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.boxShadow = 'none';
         });
     });
+
+    // Enhanced card interactions
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const x = e.clientX - card.getBoundingClientRect().left;
+            const y = e.clientY - card.getBoundingClientRect().top;
+            card.style.transform = `
+                perspective(1000px)
+                rotateX(${(y - card.offsetHeight/2) / 15}deg)
+                rotateY(${-(x - card.offsetWidth/2) / 15}deg)
+                translateZ(10px)
+            `;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+
+    // Project card click to expand
+    document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', function() {
+    this.classList.toggle('expanded');
+    const details = this.querySelector('.project-details');
+    if(details) {
+      details.style.maxHeight = details.style.maxHeight ? null : `${details.scrollHeight}px`;
+    }
+  });
+});
 });
