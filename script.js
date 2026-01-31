@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Sidebar navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            const section = document.querySelector(this.getAttribute('href'));
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
     // Tab navigation
     const tabs = document.querySelectorAll('.nav-button');
     const tabContents = document.querySelectorAll('.tab-content');

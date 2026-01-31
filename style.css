@@ -38,12 +38,7 @@ h3 { --font-size: 20px; font-size: 20px; line-height: 24px; }
 }
 
 /* Layout */
-.header {
-    background: #FFFFFF;
-    padding: 32px;
-    margin-bottom: 32px;
-    border-bottom: 4px solid #E5E5EB;
-}
+/* Header removed for sidebar layout */
 
 .nav {
     margin-top: 24px;
@@ -181,4 +176,70 @@ h3 { --font-size: 20px; font-size: 20px; line-height: 24px; }
   color: var(--error-text);
   border-left: 4px solid var(--error-text);
   padding-left: 16px;
+}
+
+/* Боковая навигация */
+.side-nav {
+    position: fixed;
+    width: 224px;
+    height: 100vh;
+    padding: 32px;
+    background: var(--bg-white);
+    border-right: 1px solid var(--border-medium);
+}
+
+.nav-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 24px;
+    border: 2px solid var(--border-light);
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 12px 16px;
+    margin: 8px 0;
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.nav-link.active {
+    background: var(--interactive);
+    color: white;
+}
+
+.nav-link.accent {
+    color: var(--error-text);
+    font-weight: 500;
+}
+
+/* Основной контент */
+main {
+    margin-left: 224px;
+    padding: 48px;
+    max-width: 1088px;
+}
+
+@media (max-width: 768px) {
+    .side-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-medium);
+    }
+    
+    main {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
 }
