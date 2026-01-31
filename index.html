@@ -3,161 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме Николай Островский</title>
+    <title>Персональная визитка</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <aside class="side-nav">
-        <div class="nav-header">
-            <img src="photo.jpg" alt="Фото" class="nav-photo">
-            <h1>Николай Островский</h1>
+    <header class="header">
+        <img src="images/photo.jpg" alt="Фото" class="profile-photo">
+        <h1 class="name">Имя Фамилия</h1>
+        <p class="profession">Профессия/Специальность</p>
+    </header>
+
+    <section class="section education">
+        <h2>Образование</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Название учебного заведения</h3>
+                <p class="period">Годы обучения</p>
+                <p>Специальность/Квалификация</p>
+            </div>
         </div>
-        <nav>
-            <ul class="nav-list">
-                <li><a href="#profile" class="nav-link active">Профиль</a></li>
-                <li><a href="#experience" class="nav-link">Опыт</a></li>
-                <li><a href="#education" class="nav-link">Образование</a></li>
-                <li><a href="#skills" class="nav-link">Навыки</a></li>
-                <li><a href="#projects" class="nav-link accent">Проекты</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
-        </nav>
-    </aside>
+    </section>
 
-    <main>
-    <!-- Правая навигация -->
-    <nav class="right-nav">
-        <a href="#profile" class="nav-dot active"></a>
-        <a href="#experience" class="nav-dot"></a>
-        <a href="#education" class="nav-dot"></a>
-        <a href="#skills" class="nav-dot"></a>
-        <a href="#projects" class="nav-dot accent"></a>
-        <a href="#contact" class="nav-dot"></a>
-    </nav>
-
-    <!-- Основной контент -->
-    <section id="profile" class="section">
-  <div class="section" itemscope itemtype="http://schema.org/Person">
-                <h2>Опыт работы</h2>
-                <div class="timeline">
-                    <article class="card">
-                        <h3>Frontend Developer</h3>
-                        <p class="caption">Компания · 2020–2023</p>
-                        <p>Разработка веб-приложений на React, оптимизация производительности</p>
-                    </article>
-                    <hr class="divider">
-                    <article class="card">
-                        <h3>Junior Developer</h3>
-                        <p class="caption">Стартап · 2018–2020</p>
-                        <p>Создание MVP для стартапов, верстка по макетам</p>
-                    </article>
-                </div>
+    <section class="section experience">
+        <h2>Опыт работы</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Название компании</h3>
+                <p class="period">Период работы</p>
+                <p>Должность и обязанности</p>
             </div>
+        </div>
+    </section>
 
-            <div class="section">
-                <h2>Навыки</h2>
-                <div class="skills-grid">
-                    <div class="skill-tag">JavaScript</div>
-                    <div class="skill-tag">React</div>
-                    <div class="skill-tag">TypeScript</div>
-                    <div class="skill-tag">HTML/CSS</div>
-                </div>
-            </div>
-        </section>
+    <section class="section contacts">
+        <h2>Контакты</h2>
+        <ul class="contact-list">
+            <li>Email: example@email.com</li>
+            <li>Телефон: +7 (XXX) XXX-XX-XX</li>
+            <li>Соцсети: 
+                <a href="#">LinkedIn</a>, 
+                <a href="#">GitHub</a>
+            </li>
+        </ul>
+    </section>
 
-        <!-- Проекты -->
-        <section id="projects" class="tab-content">
-            <div class="projects-grid">
-                <article class="project-card">
-                    <h3>Проект 1</h3>
-                    <p class="caption">2023 · Веб-приложение</p>
-                    <p>Описание проекта и используемых технологий</p>
-                </article>
-                <article class="project-card">
-                    <h3>Проект 2</h3>
-                    <p class="caption">2022 · Мобильное приложение</p>
-                    <p>Описание проекта и его особенностей</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Профиль -->
-        <section class="profile-section">
-  <img src="photo.jpg" alt="Фото Николай Островский" class="profile-photo">
-  <div>
-    <h2 class="accent">Frontend-разработчик</h2>
-    <p>3+ года опыта в создании веб-приложений</p>
-    <div class="highlight-box">
-      <h3>Ключевые компетенции</h3>
-      <ul>
-        <li>React/TypeScript разработка</li>
-        <li>Оптимизация производительности</li>
-        <li>UI/UX дизайн</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-        <!-- Контакты -->
-        <section class="contacts">
-            <h2>Контакты</h2>
-            <div class="contact-links">
-                <a href="mailto:example@domain.com" class="contact-item">
-                    <svg>...</svg>
-                    example@domain.com
-                </a>
-                <a href="https://github.com/username" class="contact-item">
-                    <svg>...</svg>
-                    GitHub
-                </a>
-            </div>
-        </section>
-
-        <!-- Опыт работы (аккордеон) -->
-        <section id="experience" class="section">
-            <div class="section-header">
-                <h2>Опыт работы</h2>
-                <button class="toggle-section">−</button>
-            </div>
-            <div class="section-content">
-                <div class="timeline">
-                    <article class="card">
-                        <h3>Frontend Developer</h3>
-                        <p class="caption">Компания · 2020–2023</p>
-                        <p>Разработка веб-приложений на React, оптимизация производительности</p>
-                    </article>
-                    <hr class="divider">
-                    <article class="card">
-                        <h3>Junior Developer</h3>
-                        <p class="caption">Стартап · 2018–2020</p>
-                        <p>Создание MVP для стартапов, верстка по макетам</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Образование (аккордеон) -->
-        <section id="education" class="section">
-            <div class="section-header">
-                <h2>Образование</h2>
-                <button class="toggle-section">−</button>
-            </div>
-            <div class="section-content">
-                <div class="timeline">
-                    <article class="card">
-                        <h3>Бакалавр веб-разработки</h3>
-                        <p class="caption">Университет · 2014–2018</p>
-                        <p>Изучение основ веб-разработки, участие в научных проектах</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2023 Николай Островский</p>
+    <footer class="footer">
+        <p>© 2026 Все права защищены</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
