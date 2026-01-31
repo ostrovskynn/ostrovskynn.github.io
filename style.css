@@ -243,3 +243,56 @@ main {
         padding: 24px 16px;
     }
 }
+
+/* Стили аккордеона */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+}
+
+.toggle-section {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-primary);
+    padding: 8px;
+    cursor: pointer;
+}
+
+.section-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.section-content.collapsed {
+    max-height: 0;
+}
+
+/* Модальные окна */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 90vw);
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}

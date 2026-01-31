@@ -25,8 +25,18 @@
     </aside>
 
     <main>
-        <!-- Резюме -->
-        <section id="resume" class="tab-content active" aria-labelledby="resume-heading">
+    <!-- Правая навигация -->
+    <nav class="right-nav">
+        <a href="#profile" class="nav-dot active"></a>
+        <a href="#experience" class="nav-dot"></a>
+        <a href="#education" class="nav-dot"></a>
+        <a href="#skills" class="nav-dot"></a>
+        <a href="#projects" class="nav-dot accent"></a>
+        <a href="#contact" class="nav-dot"></a>
+    </nav>
+
+    <!-- Основной контент -->
+    <section id="profile" class="section">
   <div class="section" itemscope itemtype="http://schema.org/Person">
                 <h2>Опыт работы</h2>
                 <div class="timeline">
@@ -100,6 +110,46 @@
                     <svg>...</svg>
                     GitHub
                 </a>
+            </div>
+        </section>
+
+        <!-- Опыт работы (аккордеон) -->
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2>Опыт работы</h2>
+                <button class="toggle-section">−</button>
+            </div>
+            <div class="section-content">
+                <div class="timeline">
+                    <article class="card">
+                        <h3>Frontend Developer</h3>
+                        <p class="caption">Компания · 2020–2023</p>
+                        <p>Разработка веб-приложений на React, оптимизация производительности</p>
+                    </article>
+                    <hr class="divider">
+                    <article class="card">
+                        <h3>Junior Developer</h3>
+                        <p class="caption">Стартап · 2018–2020</p>
+                        <p>Создание MVP для стартапов, верстка по макетам</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Образование (аккордеон) -->
+        <section id="education" class="section">
+            <div class="section-header">
+                <h2>Образование</h2>
+                <button class="toggle-section">−</button>
+            </div>
+            <div class="section-content">
+                <div class="timeline">
+                    <article class="card">
+                        <h3>Бакалавр веб-разработки</h3>
+                        <p class="caption">Университет · 2014–2018</p>
+                        <p>Изучение основ веб-разработки, участие в научных проектах</p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
