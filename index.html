@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Николай Островский | Frontend-разработчик</title>
+    <title>Николай Островский</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -134,8 +134,19 @@
         
         .section-title {
             grid-column: 1 / -1;
-            text-align: center;
             margin-bottom: 48px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 64px;
+            height: 4px;
+            background-color: var(--text-accent);
         }
         
         /* Карточка */
@@ -152,48 +163,13 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
         
-        /* Кнопка */
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background-color: var(--interactive-element);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: var(--text-interactive);
-            transform: translateY(-2px);
-        }
-        
-        .btn-accent {
-            background-color: var(--text-accent);
-        }
-        
-        .btn-accent:hover {
-            background-color: #e05500;
-        }
-        
-        /* Навигация - СПРАВА */
+        /* Шапка без навигации */
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 16px 0;
+            padding: 32px 0;
             border-bottom: 1px solid var(--bg-lines-light);
         }
         
-        .nav-container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -206,169 +182,65 @@
             text-decoration: none;
         }
         
-        .nav-menu {
+        .contacts-header {
             display: flex;
-            list-style: none;
-            gap: 32px;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
         }
         
-        .nav-link {
-            text-decoration: none;
+        .contact-link {
             color: var(--text-primary);
+            text-decoration: none;
             font-weight: 500;
-            padding: 8px 0;
-            position: relative;
-            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .nav-link:hover {
+        .contact-link:hover {
             color: var(--interactive-element);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--interactive-element);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
         }
         
         /* Герой-секция */
         .hero {
-            padding-top: 120px;
-            padding-bottom: 80px;
+            padding-top: 32px;
+            padding-bottom: 64px;
             background: linear-gradient(135deg, var(--bg-light-gray) 0%, var(--bg-white) 100%);
         }
         
         .hero-content {
             grid-column: 1 / -1;
-            text-align: center;
-            padding: 0 64px;
+        }
+        
+        .hero-title {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            flex-wrap: wrap;
         }
         
         .hero-subtitle {
-            font-size: 18px;
-            color: var(--text-hint);
+            font-size: 20px;
+            color: var(--text-primary);
             margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 800px;
         }
         
-        /* Секция "Опыт и образование" */
-        .experience-education {
+        /* Секция "Биография" */
+        .bio-content {
             grid-column: 1 / -1;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 48px;
+            align-items: start;
         }
         
-        .timeline {
-            position: relative;
-        }
-        
-        .timeline-item {
-            margin-bottom: 32px;
-            padding-left: 24px;
-            position: relative;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            background-color: var(--text-accent);
-            border-radius: 50%;
-        }
-        
-        .timeline-item:after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% + 12px);
-            background-color: var(--bg-lines);
-        }
-        
-        .timeline-item:last-child:after {
-            display: none;
-        }
-        
-        .timeline-date {
-            font-weight: 500;
-            color: var(--text-accent);
-            margin-bottom: 4px;
-        }
-        
-        /* Секция "Навыки" */
-        .skills-container {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        
-        .skill-category {
-            background-color: var(--bg-white);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--bg-lines-light);
-        }
-        
-        .skill-name {
-            font-weight: 500;
-        }
-        
-        .skill-level {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: var(--bg-light-gray);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        /* Секция "Проекты" */
-        .projects-grid {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        
-        .project-card {
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .project-image {
-            height: 180px;
+        .bio-image {
+            width: 100%;
+            height: 300px;
             background-color: var(--bg-lines-light);
-            border-radius: 8px;
-            margin-bottom: 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -376,88 +248,165 @@
             font-weight: 500;
         }
         
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
+        .bio-text {
+            font-size: 18px;
+            line-height: 32px; /* 18px * 1.5 = 27px, округляем до 28px (кратно 4) */
         }
         
-        .project-tag {
+        /* Секция "Опыт работы" */
+        .experience-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        
+        .experience-item {
+            margin-bottom: 40px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .experience-date {
+            font-weight: 500;
+            color: var(--text-accent);
+            background-color: var(--bg-light-gray);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .experience-position {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .experience-organization {
+            color: var(--text-hint);
+            margin-bottom: 16px;
+        }
+        
+        .experience-description {
+            margin-bottom: 16px;
+        }
+        
+        .experience-responsibilities {
+            list-style: none;
+        }
+        
+        .experience-responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .experience-responsibilities li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-accent);
+            border-radius: 50%;
+        }
+        
+        /* Секция "Компетенции" */
+        .competencies-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        
+        .competency-category {
+            margin-bottom: 32px;
+        }
+        
+        .competency-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--bg-lines-light);
+        }
+        
+        .competency-name {
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .competency-level {
             display: inline-block;
             padding: 4px 12px;
             background-color: var(--bg-light-gray);
             border-radius: 20px;
             font-size: 14px;
-            color: var(--text-primary);
+            font-weight: 500;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .level-advanced {
+            background-color: rgba(0, 97, 217, 0.1);
+            color: var(--interactive-element);
+        }
+        
+        .level-intermediate {
+            background-color: rgba(255, 149, 0, 0.1);
+            color: var(--warning);
+        }
+        
+        .level-basic {
+            background-color: var(--bg-lines-light);
+            color: var(--text-hint);
+        }
+        
+        .competency-description {
+            padding: 24px;
+            background-color: var(--bg-light-gray);
+            border-radius: 12px;
+            border-left: 4px solid var(--text-accent);
         }
         
         /* Секция "Контакты" */
         .contact-container {
             grid-column: 1 / -1;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
         
-        .contact-info {
+        .contact-card {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-        }
-        
-        .contact-item {
-            display: flex;
             align-items: center;
-            gap: 16px;
+            text-align: center;
+            padding: 32px 24px;
         }
         
         .contact-icon {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             background-color: var(--bg-light-gray);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-accent);
-            font-size: 20px;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .form-label {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        .form-input, .form-textarea {
-            padding: 12px 16px;
-            border: 1px solid var(--border-field);
-            border-radius: 8px;
-            font-family: var(--font-family);
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--interactive-element);
-        }
-        
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
+        .contact-title {
+            margin-bottom: 12px;
         }
         
         /* Футер */
@@ -469,38 +418,20 @@
         
         .footer-content {
             grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .footer-title {
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
             color: white;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-link {
-            color: var(--bg-lines);
             text-decoration: none;
-            margin-bottom: 12px;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            color: white;
         }
         
         .copyright {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-hint);
+            color: var(--bg-lines);
             font-size: 14px;
         }
         
@@ -514,70 +445,37 @@
         
         /* Адаптивность */
         @media (max-width: 1087px) {
-            .skills-container,
-            .projects-grid {
+            .contact-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            
+            .contacts-header {
+                align-items: flex-start;
+            }
+            
+            .bio-content,
+            .experience-grid,
+            .competencies-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
             
             .contact-container {
                 grid-template-columns: 1fr;
             }
-        }
-        
-        @media (max-width: 767px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                color: var(--text-primary);
-            }
-            
-            .hero-content {
-                padding: 0;
-            }
-            
-            .experience-education {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
-            .skills-container,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
             
             .footer-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
-            .mobile-menu {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-white);
-                padding: 20px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-            
-            .mobile-menu.active {
-                display: block;
-            }
-            
-            .mobile-nav {
-                list-style: none;
-                display: flex;
                 flex-direction: column;
-                gap: 20px;
+                align-items: flex-start;
+                gap: 24px;
             }
         }
         
@@ -598,14 +496,6 @@
             letter-spacing: -0.01em;
         }
         
-        /* Горизонтальные линейки через каждые 4px */
-        .horizontal-ruler {
-            height: 1px;
-            background-color: var(--bg-lines);
-            width: 100%;
-            margin: 4px 0;
-        }
-        
         /* Классы для сетки и базовой линии */
         .spacing-4 { margin-bottom: 4px; }
         .spacing-8 { margin-bottom: 8px; }
@@ -615,343 +505,250 @@
         .spacing-24 { margin-bottom: 24px; }
         .spacing-28 { margin-bottom: 28px; }
         .spacing-32 { margin-bottom: 32px; }
+        
+        /* Горизонтальные линейки */
+        .horizontal-ruler {
+            height: 1px;
+            background-color: var(--bg-lines);
+            width: 100%;
+            margin: 4px 0;
+        }
     </style>
 </head>
 <body>
     <!-- Шапка сайта -->
     <header class="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">Николай Островский</a>
-            
-            <!-- Навигация справа -->
-            <nav class="desktop-nav">
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Главная</a></li>
-                    <li><a href="#experience" class="nav-link">Опыт & Образование</a></li>
-                    <li><a href="#skills" class="nav-link">Навыки</a></li>
-                    <li><a href="#projects" class="nav-link">Проекты</a></li>
-                    <li><a href="#contact" class="nav-link">Контакты</a></li>
-                </ul>
-            </nav>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-        </div>
-        
-        <!-- Мобильное меню -->
-        <div class="mobile-menu" id="mobileMenu">
-            <ul class="mobile-nav">
-                <li><a href="#home" class="nav-link">Главная</a></li>
-                <li><a href="#experience" class="nav-link">Опыт & Образование</a></li>
-                <li><a href="#skills" class="nav-link">Навыки</a></li>
-                <li><a href="#projects" class="nav-link">Проекты</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Николай Островский</div>
+                <div class="contacts-header">
+                    <a href="mailto:n.ostrovskiy@example.com" class="contact-link">n.ostrovskiy@example.com</a>
+                    <a href="tel:+79161234567" class="contact-link">+7 (916) 123-45-67</a>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Основной контент -->
     <main>
         <!-- Герой-секция -->
-        <section id="home" class="section hero">
+        <section class="section hero">
             <div class="container grid-desktop">
                 <div class="hero-content fade-in visual-balance">
-                    <h1>Николай Островский</h1>
-                    <p class="hero-subtitle">Frontend-разработчик с 5-летним опытом создания современных интерфейсов. Специализируюсь на React, TypeScript и дизайн-системах.</p>
-                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="#projects" class="btn">Посмотреть проекты</a>
-                        <a href="#contact" class="btn btn-accent">Контакты</a>
+                    <div class="hero-title">
+                        <h1>Николай Островский</h1>
+                        <div class="experience-date">Политический специалист</div>
                     </div>
+                    <p class="hero-subtitle">Специалист в области политических коммуникаций, агитационно-пропагандистской работы и взаимодействия со СМИ. Опыт работы в структурах политических партий и общественных организаций.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Секция "Опыт и образование" -->
-        <section id="experience" class="section">
+        <!-- Секция "Биография" -->
+        <section class="section">
             <div class="container grid-desktop">
                 <div class="section-title">
-                    <h2>Опыт работы и образование</h2>
+                    <h2>Биография</h2>
                 </div>
                 
-                <div class="experience-education fade-in">
-                    <!-- Опыт работы слева -->
+                <div class="bio-content fade-in">
                     <div>
-                        <h3>Опыт работы</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">2021 - настоящее время</div>
-                                <h4>Senior Frontend Developer</h4>
-                                <p class="spacing-8">TechSolutions Inc.</p>
-                                <p>Разработка и поддержка крупного SaaS-продукта. Руководство командой из 4 разработчиков. Внедрение дизайн-системы и оптимизация производительности.</p>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-date">2019 - 2021</div>
-                                <h4>Frontend Developer</h4>
-                                <p class="spacing-8">Digital Agency "Веб-профи"</p>
-                                <p>Создание адаптивных веб-приложений для клиентов из различных отраслей. Работа с React, Vue.js и современными инструментами разработки.</p>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-date">2017 - 2019</div>
-                                <h4>Junior Frontend Developer</h4>
-                                <p class="spacing-8">Студия "Интерфейс"</p>
-                                <p>Верстка адаптивных сайтов, участие в разработке компонентов на JavaScript. Изучение современных фреймворков и методологий.</p>
-                            </div>
+                        <div class="bio-image">
+                            Фотография
                         </div>
                     </div>
                     
-                    <!-- Образование справа -->
+                    <div class="bio-text">
+                        <p>Родился в 1995 году в Запорожье. С детства проявлял интерес к общественно-политической жизни, активно участвовал в школьном самоуправлении.</p>
+                        
+                        <div class="spacing-16"></div>
+                        
+                        <p>В 2017 году окончил Запорожский национальный университет по специальности "Политология". Во время учебы был активистом студенческих организаций, участвовал в организации мероприятий и дебатов.</p>
+                        
+                        <div class="spacing-16"></div>
+                        
+                        <p>После окончания университета начал профессиональную деятельность в сфере политических коммуникаций. Работал в общественных организациях, занимающихся гражданским просвещением и участием в избирательных процессах.</p>
+                        
+                        <div class="spacing-16"></div>
+                        
+                        <p>В 2023 году присоединился к Запорожскому региональному отделению партии "Единая Россия", где прошел путь от пресс-секретаря до заместителя руководителя регионального исполнительного комитета.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Опыт работы" -->
+        <section class="section">
+            <div class="container grid-desktop">
+                <div class="section-title">
+                    <h2>Опыт работы</h2>
+                </div>
+                
+                <div class="experience-grid fade-in">
+                    <!-- Текущая должность -->
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-position">Заместитель руководителя - начальник отдела агитационно-пропагандистской работы</div>
+                                <div class="experience-organization">Региональный исполнительный комитет Запорожского регионального отделения партии "Единая Россия"</div>
+                            </div>
+                            <div class="experience-date">2024 - настоящее время</div>
+                        </div>
+                        
+                        <div class="experience-description">
+                            Руководство отделом агитационно-пропагандистской работы, разработка и реализация стратегии политических коммуникаций в регионе.
+                        </div>
+                        
+                        <ul class="experience-responsibilities">
+                            <li>Разработка и координация агитационных кампаний</li>
+                            <li>Организация мероприятий и встреч с населением</li>
+                            <li>Взаимодействие с местными СМИ и блогерами</li>
+                            <li>Подготовка аналитических материалов по политической ситуации</li>
+                            <li>Координация работы волонтерского корпуса</li>
+                            <li>Разработка информационных материалов для различных аудиторий</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Предыдущая должность -->
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-position">Пресс-секретарь</div>
+                                <div class="experience-organization">Региональный исполнительный комитет Запорожского регионального отделения партии "Единая Россия"</div>
+                            </div>
+                            <div class="experience-date">2023 - 2024</div>
+                        </div>
+                        
+                        <div class="experience-description">
+                            Обеспечение информационного сопровождения деятельности регионального отделения партии, взаимодействие со СМИ.
+                        </div>
+                        
+                        <ul class="experience-responsibilities">
+                            <li>Подготовка пресс-релизов и заявлений для СМИ</li>
+                            <li>Организация пресс-конференций и брифингов</li>
+                            <li>Ведение социальных сетей регионального отделения</li>
+                            <li>Мониторинг СМИ и анализ информационного поля</li>
+                            <li>Подготовка спикеров к выступлениям в СМИ</li>
+                            <li>Разработка контент-стратегии для цифровых каналов</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Компетенции" -->
+        <section class="section">
+            <div class="container grid-desktop">
+                <div class="section-title">
+                    <h2>Профессиональные компетенции</h2>
+                </div>
+                
+                <div class="competencies-grid fade-in">
+                    <!-- Левая колонка: Навыки с оценкой -->
                     <div>
-                        <h3>Образование</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">2013 - 2017</div>
-                                <h4>Бакалавр информатики</h4>
-                                <p class="spacing-8">Санкт-Петербургский государственный университет</p>
-                                <p>Факультет прикладной математики и информатики. Диплом с отличием.</p>
+                        <div class="competency-category">
+                            <h3>Политические коммуникации</h3>
+                            <div class="competency-item">
+                                <span class="competency-name">Агитационная работа</span>
+                                <span class="competency-level level-advanced">Продвинутый</span>
                             </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-date">2020</div>
-                                <h4>Frontend Advanced</h4>
-                                <p class="spacing-8">Яндекс.Практикум</p>
-                                <p>Углубленный курс по современному Frontend-разработке, архитектуре приложений и оптимизации.</p>
+                            <div class="competency-item">
+                                <span class="competency-name">Взаимодействие со СМИ</span>
+                                <span class="competency-level level-advanced">Продвинутый</span>
                             </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-date">2022</div>
-                                <h4>React & TypeScript</h4>
-                                <p class="spacing-8">Stepik, онлайн-курс</p>
-                                <p>Профессиональное использование TypeScript в React-приложениях, паттерны проектирования.</p>
+                            <div class="competency-item">
+                                <span class="competency-name">Политический анализ</span>
+                                <span class="competency-level level-intermediate">Средний</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Секция "Навыки" -->
-        <section id="skills" class="section">
-            <div class="container grid-desktop">
-                <div class="section-title">
-                    <h2>Навыки и технологии</h2>
-                </div>
-                
-                <div class="skills-container fade-in">
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item">
-                                <span class="skill-name">React</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">TypeScript</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">JavaScript (ES6+)</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">HTML5 / CSS3</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Vue.js</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Next.js</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Инструменты</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item">
-                                <span class="skill-name">Git / GitHub</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Webpack / Vite</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Figma</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Jest / Testing Library</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">SASS / LESS</span>
-                                <span class="skill-level">Продвинутый</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Tailwind CSS</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Дополнительно</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item">
-                                <span class="skill-name">Английский язык</span>
-                                <span class="skill-level">B2 (Upper-Intermediate)</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Agile / Scrum</span>
-                                <span class="skill-level">Опытный</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">UI/UX принципы</span>
-                                <span class="skill-level">Средний</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Дизайн-системы</span>
-                                <span class="skill-level">Опытный</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Code Review</span>
-                                <span class="skill-level">Опытный</span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Менторство</span>
-                                <span class="skill-level">Опытный</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Секция "Проекты" -->
-        <section id="projects" class="section">
-            <div class="container grid-desktop">
-                <div class="section-title">
-                    <h2>Проекты</h2>
-                </div>
-                
-                <div class="projects-grid fade-in">
-                    <div class="card project-card">
-                        <div class="project-image">
-                            FinTech Dashboard
+                        
+                        <div class="competency-category">
+                            <h3>Организационные навыки</h3>
+                            <div class="competency-item">
+                                <span class="competency-name">Управление проектами</span>
+                                <span class="competency-level level-intermediate">Средний</span>
+                            </div>
+                            <div class="competency-item">
+                                <span class="competency-name">Координация команд</span>
+                                <span class="competency-level level-advanced">Продвинутый</span>
+                            </div>
+                            <div class="competency-item">
+                                <span class="competency-name">Планирование мероприятий</span>
+                                <span class="competency-level level-advanced">Продвинутый</span>
+                            </div>
                         </div>
-                        <h3>Панель аналитики</h3>
-                        <p>Дашборд для финансового приложения с графиками, таблицами и фильтрами в реальном времени.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">TypeScript</span>
-                            <span class="project-tag">D3.js</span>
+                        
+                        <div class="competency-category">
+                            <h3>Цифровые навыки</h3>
+                            <div class="competency-item">
+                                <span class="competency-name">Социальные сети</span>
+                                <span class="competency-level level-advanced">Продвинутый</span>
+                            </div>
+                            <div class="competency-item">
+                                <span class="competency-name">Аналитика медиапространства</span>
+                                <span class="competency-level level-intermediate">Средний</span>
+                            </div>
+                            <div class="competency-item">
+                                <span class="competency-name">Контент-менеджмент</span>
+                                <span class="competency-level level-intermediate">Средний</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="card project-card">
-                        <div class="project-image">
-                            E-commerce Platform
-                        </div>
-                        <h3>Интернет-магазин</h3>
-                        <p>Полнофункциональная платформа для онлайн-торговли с корзиной, фильтрами и оплатой.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Next.js</span>
-                            <span class="project-tag">Redux</span>
-                            <span class="project-tag">Stripe API</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card project-card">
-                        <div class="project-image">
-                            Design System
-                        </div>
-                        <h3>Дизайн-система</h3>
-                        <p>Библиотека компонентов для внутренних продуктов компании с документацией и примерами.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Storybook</span>
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Styled Components</span>
-                        </div>
+                    <!-- Правая колонка: Описание деятельности -->
+                    <div class="competency-description">
+                        <h3>Основные направления деятельности</h3>
+                        <div class="spacing-16"></div>
+                        <p><strong>Разработка агитационных материалов:</strong> создание печатных и цифровых материалов для различных целевых аудиторий, адаптация сообщений под разные социальные группы.</p>
+                        
+                        <div class="spacing-12"></div>
+                        
+                        <p><strong>Организация публичных мероприятий:</strong> планирование и проведение встреч с населением, круглых столов, дискуссий и других форматов взаимодействия с гражданами.</p>
+                        
+                        <div class="spacing-12"></div>
+                        
+                        <p><strong>Медиа сопровождение:</strong> подготовка спикеров к интервью, написание пресс-релизов, организация брифингов и пресс-конференций, мониторинг упоминаний в СМИ.</p>
+                        
+                        <div class="spacing-12"></div>
+                        
+                        <p><strong>Аналитическая работа:</strong> изучение общественных настроений, анализ эффективности коммуникационных кампаний, подготовка рекомендаций по корректировке стратегий.</p>
+                        
+                        <div class="spacing-12"></div>
+                        
+                        <p><strong>Координация волонтерской деятельности:</strong> обучение и руководство волонтерами, распределение задач, обеспечение взаимодействия между различными подразделениями.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Секция "Контакты" -->
-        <section id="contact" class="section">
+        <section class="section">
             <div class="container grid-desktop">
                 <div class="section-title">
                     <h2>Контакты</h2>
                 </div>
                 
                 <div class="contact-container fade-in">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>nikolay.ostrovskiy@example.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div>
-                                <h4>Телефон</h4>
-                                <p>+7 (912) 345-67-89</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <h4>Локация</h4>
-                                <p>Санкт-Петербург, Россия</p>
-                                <p class="text-hint">Готов к удаленной работе</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">💼</div>
-                            <div>
-                                <h4>LinkedIn</h4>
-                                <p>linkedin.com/in/nikolay-ostrovskiy</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">🐙</div>
-                            <div>
-                                <h4>GitHub</h4>
-                                <p>github.com/nostrovskiy</p>
-                            </div>
-                        </div>
+                    <div class="card contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3 class="contact-title">Email</h3>
+                        <p>n.ostrovskiy@example.com</p>
+                        <p class="text-hint" style="margin-top: 8px;">Для деловой переписки</p>
                     </div>
                     
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Ваше имя</label>
-                            <input type="text" id="name" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea id="message" class="form-textarea" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-accent">Отправить сообщение</button>
-                        
-                        <div id="formMessage" style="display: none; padding: 12px; border-radius: 8px; margin-top: 16px;"></div>
-                    </form>
+                    <div class="card contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3 class="contact-title">Телефон</h3>
+                        <p>+7 (916) 123-45-67</p>
+                        <p class="text-hint" style="margin-top: 8px;">Для срочных вопросов</p>
+                    </div>
+                    
+                    <div class="card contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3 class="contact-title">Адрес</h3>
+                        <p>г. Запорожье</p>
+                        <p>Региональный исполнительный комитет</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -959,77 +756,21 @@
 
     <!-- Футер -->
     <footer class="footer">
-        <div class="container grid-desktop">
+        <div class="container">
             <div class="footer-content">
                 <div>
-                    <h3 class="footer-title">Николай Островский</h3>
-                    <p style="color: var(--bg-lines); margin-bottom: 20px;">Frontend-разработчик, специалист по современным интерфейсам и дизайн-системам.</p>
+                    <a href="#" class="footer-logo">Николай Островский</a>
+                    <p style="color: var(--bg-lines); margin-top: 8px;">Специалист по политическим коммуникациям</p>
                 </div>
-                
-                <div>
-                    <h3 class="footer-title">Навыки</h3>
-                    <ul class="footer-links">
-                        <li><span class="footer-link">React & TypeScript</span></li>
-                        <li><span class="footer-link">Дизайн-системы</span></li>
-                        <li><span class="footer-link">Frontend Архитектура</span></li>
-                    </ul>
+                <div class="copyright">
+                    <p>© 2024 Николай Островский</p>
+                    <p style="margin-top: 4px;">Запорожское региональное отделение</p>
                 </div>
-                
-                <div>
-                    <h3 class="footer-title">Быстрые ссылки</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home" class="footer-link">Главная</a></li>
-                        <li><a href="#experience" class="footer-link">Опыт & Образование</a></li>
-                        <li><a href="#projects" class="footer-link">Проекты</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>© 2023 Николай Островский. Все права защищены.</p>
-                <p style="margin-top: 8px; font-size: 12px;">Сайт создан с использованием дизайн-системы</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Плавная прокрутка для якорных ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Закрываем мобильное меню, если открыто
-                    document.getElementById('mobileMenu').classList.remove('active');
-                    
-                    // Плавная прокрутка к элементу
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Мобильное меню
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // Закрытие мобильного меню при клике на ссылку
-        document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-            });
-        });
-        
         // Анимация появления элементов при скролле
         const fadeElements = document.querySelectorAll('.fade-in');
         
@@ -1048,34 +789,7 @@
         window.addEventListener('scroll', fadeInOnScroll);
         window.addEventListener('load', fadeInOnScroll);
         
-        // Обработка формы
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // В реальном проекте здесь был бы AJAX-запрос к серверу
-            // Для демо просто показываем сообщение об успехе
-            formMessage.textContent = 'Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.';
-            formMessage.style.display = 'block';
-            formMessage.style.backgroundColor = 'var(--bg-light-gray)';
-            formMessage.style.color = 'var(--text-primary)';
-            
-            // Очищаем форму
-            contactForm.reset();
-            
-            // Скрываем сообщение через 5 секунд
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
-            
-            // Прокручиваем к сообщению
-            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-        
         // Визуальная компенсация для восприятия
-        // Корректируем позиционирование некоторых элементов
         window.addEventListener('load', function() {
             // Добавляем небольшие корректировки для визуального баланса
             const heroTitle = document.querySelector('h1');
@@ -1089,6 +803,31 @@
                 const ruler = document.createElement('div');
                 ruler.className = 'horizontal-ruler';
                 section.insertBefore(ruler, section.firstChild);
+            });
+        });
+        
+        // Простая анимация для карточек при наведении
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+        
+        // Плавный скролл к якорям (если будут добавлены позже)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
