@@ -3,52 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Персональная визитка</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Профессиональная визитка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые стили дизайн-системы */
+        :root {
+            /* Цвета текста */
+            --text-heading: #000000;
+            --text-primary: #333333;
+            --text-hint: #76767A;
+            --text-accent: #ff5e00;
+            --text-interactive: #0050B2;
+            
+            /* Цвета фона */
+            --bg-white: #FFFFFF;
+            --bg-light-gray: #F5F5F7;
+            --bg-lines-light: #E5E5EB;
+            --bg-lines: #D9D9DE;
+            
+            /* Цвета линий и рамок */
+            --border-field: #A7A8AB;
+            
+            /* Цвета интерактивных элементов */
+            --interactive-element: #0061D9;
+            
+            /* Цвета статусов */
+            --warning: #FF9500;
+            --error-bg: rgba(229, 46, 46, 0.1);
+            --error-text: #D51A1A;
+            
+            /* Отступы и размеры */
+            --base-unit: 4px;
+            --grid-gap-desktop: 32px;
+            --grid-gap-mobile: 16px;
+            
+            /* Типографика */
+            --font-family: 'Golos Text', sans-serif;
+            --line-height-base: 1.5;
+            --line-height-heading: 1.25;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: calc(var(--line-height-base) * 16px);
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+        
+        /* Округление line-height до ближайшего числа, кратного 4px */
+        p, li, .text-base {
+            line-height: 24px; /* 16px * 1.5 = 24px (кратно 4) */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.25;
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 40px;
+            line-height: 50px; /* 40px * 1.25 = 50px, округляем до 52px (кратно 4) */
+            margin-bottom: 32px;
+            color: var(--text-accent);
+        }
+        
+        h2 {
+            font-size: 32px;
+            line-height: 40px; /* 32px * 1.25 = 40px (кратно 4) */
+            margin-bottom: 24px;
+            color: var(--text-accent);
+        }
+        
+        h3 {
+            font-size: 24px;
+            line-height: 32px; /* 24px * 1.25 = 30px, округляем до 32px (кратно 4) */
+            margin-bottom: 20px;
+        }
+        
+        /* Контейнер с учетом сетки */
+        .container {
+            width: 100%;
+            max-width: 1088px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Сетка для десктопа */
+        .grid-desktop {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--grid-gap-desktop);
+        }
+        
+        /* Сетка для мобильных */
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .grid-mobile {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--grid-gap-mobile);
+            }
+        }
+        
+        /* Компоненты */
+        .section {
+            padding: 64px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--bg-light-gray);
+        }
+        
+        .section-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        /* Карточка */
+        .card {
+            background-color: var(--bg-white);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Кнопка */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: var(--interactive-element);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--text-interactive);
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--text-accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #e05500;
+        }
+        
+        /* Навигация */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bg-lines-light);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-accent);
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--interactive-element);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--interactive-element);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Герой-секция */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--bg-light-gray) 0%, var(--bg-white) 100%);
+        }
+        
+        .hero-content {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 0 64px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-hint);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Секция "Обо мне" */
+        .about-content {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        /* Секция "Услуги" */
+        .services-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        /* Секция "Контакты" */
+        .contact-form {
+            grid-column: 2 / 6;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--border-field);
+            border-radius: 8px;
+            font-family: var(--font-family);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--interactive-element);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Футер */
+        .footer {
+            background-color: var(--text-heading);
+            color: white;
+            padding: 48px 0 32px;
+        }
+        
+        .footer-content {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .footer-title {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            color: var(--bg-lines);
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-hint);
+            font-size: 14px;
+        }
+        
+        /* Визуальные разделители */
+        .divider {
+            height: 4px;
+            width: 100%;
+            background-color: var(--bg-lines-light);
+            margin: 32px 0;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1087px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-form {
+                grid-column: 1 / -1;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: var(--text-primary);
+            }
+            
+            .hero-content {
+                padding: 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .mobile-nav {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        /* Анимации */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Визуальная компенсация для восприятия */
+        .visual-balance {
+            letter-spacing: -0.01em;
+        }
+    </style>
 </head>
 <body>
+    <!-- Шапка сайта -->
     <header class="header">
-        <img src="images/photo.jpg" alt="Фото" class="profile-photo">
-        <h1 class="name">Имя Фамилия</h1>
-        <p class="profession">Профессия/Специальность</p>
+        <div class="container nav-container">
+            <a href="#" class="logo">Профессионал</a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Главная</a></li>
+                    <li><a href="#about" class="nav-link">Обо мне</a></li>
+                    <li><a href="#services" class="nav-link">Услуги</a></li>
+                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+        
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">Обо мне</a></li>
+                <li><a href="#services" class="nav-link">Услуги</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="section education">
-        <h2>Образование</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Название учебного заведения</h3>
-                <p class="period">Годы обучения</p>
-                <p>Специальность/Квалификация</p>
+    <!-- Основной контент -->
+    <main>
+        <!-- Герой-секция -->
+        <section id="home" class="section hero">
+            <div class="container grid-desktop">
+                <div class="hero-content fade-in visual-balance">
+                    <h1>Алексей Иванов</h1>
+                    <p class="hero-subtitle">Профессиональный веб-разработчик с 8-летним опытом создания современных и эффективных цифровых решений для бизнеса любого масштаба.</p>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="#contact" class="btn">Связаться со мной</a>
+                        <a href="#services" class="btn btn-accent">Мои услуги</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section experience">
-        <h2>Опыт работы</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Название компании</h3>
-                <p class="period">Период работы</p>
-                <p>Должность и обязанности</p>
+        <!-- Секция "Обо мне" -->
+        <section id="about" class="section">
+            <div class="container grid-desktop">
+                <div class="section-title">
+                    <h2>Обо мне</h2>
+                </div>
+                
+                <div class="about-content fade-in">
+                    <div>
+                        <h3>Мой опыт и подход</h3>
+                        <p>За 8 лет профессиональной деятельности я реализовал более 150 проектов различной сложности: от лендингов для малого бизнеса до корпоративных порталов и сложных веб-приложений.</p>
+                        <div class="divider"></div>
+                        <p>Мой подход основан на глубоком анализе бизнес-задач клиента и поиске наиболее эффективных технических решений. Я уделяю внимание не только визуальной составляющей, но и производительности, безопасности и масштабируемости проектов.</p>
+                        <div style="margin-top: 24px;">
+                            <a href="#contact" class="btn">Обсудить проект</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Технологии и инструменты</h3>
+                        <ul style="list-style-position: inside; margin-bottom: 20px;">
+                            <li style="margin-bottom: 8px;">HTML5, CSS3, JavaScript (ES6+)</li>
+                            <li style="margin-bottom: 8px;">React, Vue.js, Angular</li>
+                            <li style="margin-bottom: 8px;">Node.js, Express, MongoDB</li>
+                            <li style="margin-bottom: 8px;">Responsive/Adaptive Design</li>
+                            <li style="margin-bottom: 8px;">UI/UX Design Principles</li>
+                        </ul>
+                        <div class="card" style="background-color: var(--bg-light-gray);">
+                            <h4 style="color: var(--text-accent); margin-bottom: 12px;">Достижения</h4>
+                            <p>В 2022 году мой проект для FinTech компании получил награду "Лучший UX" на международном конкурсе WebAwards.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section contacts">
-        <h2>Контакты</h2>
-        <ul class="contact-list">
-            <li>Email: example@email.com</li>
-            <li>Телефон: +7 (XXX) XXX-XX-XX</li>
-            <li>Соцсети: 
-                <a href="#">LinkedIn</a>, 
-                <a href="#">GitHub</a>
-            </li>
-        </ul>
-    </section>
+        <!-- Секция "Услуги" -->
+        <section id="services" class="section">
+            <div class="container grid-desktop">
+                <div class="section-title">
+                    <h2>Мои услуги</h2>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="card fade-in">
+                        <h3>Веб-разработка</h3>
+                        <p>Создание современных веб-сайтов и приложений с использованием передовых технологий. Адаптивная верстка, оптимизация производительности.</p>
+                        <div style="margin-top: 20px;">
+                            <span style="font-weight: 600; color: var(--text-accent);">от 50 000 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3>UI/UX Дизайн</h3>
+                        <p>Проектирование пользовательских интерфейсов, создание прототипов и дизайн-систем. Анализ пользовательского опыта и повышение конверсии.</p>
+                        <div style="margin-top: 20px;">
+                            <span style="font-weight: 600; color: var(--text-accent);">от 30 000 ₽</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3>Техническая поддержка</h3>
+                        <p>Обслуживание и развитие существующих проектов. Оптимизация, исправление ошибок, добавление нового функционала.</p>
+                        <div style="margin-top: 20px;">
+                            <span style="font-weight: 600; color: var(--text-accent);">от 15 000 ₽/мес</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Секция "Контакты" -->
+        <section id="contact" class="section">
+            <div class="container grid-desktop">
+                <div class="section-title">
+                    <h2>Связаться со мной</h2>
+                </div>
+                
+                <form class="contact-form fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Ваше имя</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent">Отправить сообщение</button>
+                    
+                    <div id="formMessage" style="display: none; padding: 12px; border-radius: 8px; margin-top: 16px;"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
     <footer class="footer">
-        <p>© 2026 Все права защищены</p>
+        <div class="container grid-desktop">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-title">Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:alex@example.com" class="footer-link">alex@example.com</a></li>
+                        <li><a href="tel:+79161234567" class="footer-link">+7 (916) 123-45-67</a></li>
+                        <li><span class="footer-link">Москва, Россия</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Соцсети</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">LinkedIn</a></li>
+                        <li><a href="#" class="footer-link">GitHub</a></li>
+                        <li><a href="#" class="footer-link">Telegram</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Быстрые ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Главная</a></li>
+                        <li><a href="#about" class="footer-link">Обо мне</a></li>
+                        <li><a href="#services" class="footer-link">Услуги</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Профессиональная визитка. Все права защищены.</p>
+                <p style="margin-top: 8px; font-size: 12px;">Сайт создан с использованием дизайн-системы</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Закрываем мобильное меню, если открыто
+                    document.getElementById('mobileMenu').classList.remove('active');
+                    
+                    // Плавная прокрутка к элементу
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Анимация появления элементов при скролле
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Проверяем при загрузке и при скролле
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Обработка формы
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // В реальном проекте здесь был бы AJAX-запрос к серверу
+            // Для демо просто показываем сообщение об успехе
+            formMessage.textContent = 'Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.';
+            formMessage.style.display = 'block';
+            formMessage.style.backgroundColor = 'var(--bg-light-gray)';
+            formMessage.style.color = 'var(--text-primary)';
+            
+            // Очищаем форму
+            contactForm.reset();
+            
+            // Скрываем сообщение через 5 секунд
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+            
+            // Прокручиваем к сообщению
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        // Визуальная компенсация для восприятия
+        // Корректируем позиционирование некоторых элементов
+        window.addEventListener('load', function() {
+            // Добавляем небольшие корректировки для визуального баланса
+            const heroTitle = document.querySelector('h1');
+            if (heroTitle) {
+                heroTitle.style.marginTop = '4px'; // Визуальная компенсация
+            }
+        });
+    </script>
 </body>
 </html>
